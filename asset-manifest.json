@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/burn-rate/static/css/main.073c9b0a.css",
-    "main.js": "/burn-rate/static/js/main.40108f3d.js",
+    "main.css": "/burn-rate/static/css/main.3d5bbf3e.css",
+    "main.js": "/burn-rate/static/js/main.3d7bffbd.js",
     "static/js/787.8a1cbe4e.chunk.js": "/burn-rate/static/js/787.8a1cbe4e.chunk.js",
-    "static/media/logo.svg": "/burn-rate/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/burn-rate/index.html",
-    "main.073c9b0a.css.map": "/burn-rate/static/css/main.073c9b0a.css.map",
-    "main.40108f3d.js.map": "/burn-rate/static/js/main.40108f3d.js.map",
+    "main.3d5bbf3e.css.map": "/burn-rate/static/css/main.3d5bbf3e.css.map",
+    "main.3d7bffbd.js.map": "/burn-rate/static/js/main.3d7bffbd.js.map",
     "787.8a1cbe4e.chunk.js.map": "/burn-rate/static/js/787.8a1cbe4e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.40108f3d.js"
+    "static/css/main.3d5bbf3e.css",
+    "static/js/main.3d7bffbd.js"
   ]
 }
