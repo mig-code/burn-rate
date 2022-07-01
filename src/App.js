@@ -1,13 +1,12 @@
 import Header from "./components/Header";
-import Main from "./components/Main";
+import Months from "./components/Months";
 
 
 function App() {
   return (
     <div className="App">
-      
       <Header />
-      <Main />
+      <Months />
     </div>
   );
 }
