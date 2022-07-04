@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 
 function Months() {
+ 
   const [rangeBalance, setRangeBalance] = useState(20000)
   const [rangeIncome, setRangeIncome] = useState(2000)
   const [rangeExpense, setRangeExpense] = useState(1000)
@@ -23,8 +24,8 @@ function Months() {
       setMonthsLeftString(
         monthsLeft === 0
           ? `You will be out of money soon!`
-          : `You have money for ${monthsLeft} months. You will be out of money on
-        ${dateMonthsLeft.getMonth() + 1}/${dateMonthsLeft.getFullYear()}`
+          : `You have enough for ${monthsLeft} months.
+           You will be out of money in ${dateMonthsLeft.getMonth() + 1}/${dateMonthsLeft.getFullYear()}`
       )
     }
   }
@@ -38,7 +39,7 @@ function Months() {
     <div className="input-box-container">
         
       <div className="input-box">
-        <h4 className="input-box__title">TOTAL BALANCE</h4>
+        
         <h2 className="input-box__amount">{rangeBalance} €</h2>
         <input
           type="range"
@@ -51,10 +52,11 @@ function Months() {
             setRangeBalance(parseInt(event.target.value))
           }}
         />
+        <h4 className="input-box__title">TOTAL BALANCE</h4>
       </div>
 
       <div className="input-box">
-        <h4 className="input-box__title">MONTHLY INCOME</h4>
+        
         <h2 className="input-box__amount">{rangeIncome} €</h2>
         <input
           type="range"
@@ -67,9 +69,10 @@ function Months() {
             setRangeIncome(parseInt(event.target.value))
           }}
         />
+        <h4 className="input-box__title input-box__title--green">MONTHLY INCOME</h4>
       </div>
       <div className="input-box">
-        <h4 className="input-box__title">MONTHLY EXPENSES</h4>
+        
         <h2 className="input-box__amount">{rangeExpense} €</h2>
         <input
           type="range"
@@ -82,10 +85,11 @@ function Months() {
             setRangeExpense(parseInt(event.target.value))
           }}
         />
+        <h4 className="input-box__title input-box__title--red">MONTHLY EXPENSES</h4>
       </div>
       </div>
 
-      <h2 className="months-left">{monthsLeftString}</h2>
+      <h2 className="months-left line-break">{monthsLeftString}</h2>
     </div>
   )
 }

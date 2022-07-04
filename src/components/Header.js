@@ -3,7 +3,7 @@
 function Header(){
     return (
         <header className="header">
-        <h3>Calculate your burn rate</h3>
+        <h3 className="header__title">Burn Rate App</h3>
         </header>
     );
 }
