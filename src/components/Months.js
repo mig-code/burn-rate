@@ -1,13 +1,27 @@
 import { useState } from "react"
 
 function Months() {
-  const [rangeBalance, setRangeBalance] = useState(20000)
-  const [rangeIncome, setRangeIncome] = useState(2000)
-  const [rangeExpense, setRangeExpense] = useState(1000)
+
+  const [ranges, setRanges] = useState({
+    balance: 20000,
+    income: 2000,
+    expense: 1000,
+  })
+
   const [monthsLeftString, setMonthsLeftString] = useState(
     `Congrats. 
       You don't spend more than you earn.`
   )
+
+  function updateRangesAndMonths(event) {
+    const { name, value } = event.target
+    setRanges({ ...ranges, [name]: parseInt(value) })
+    calcMonthsLeft(
+      name === "balance" ? parseInt(value) : ranges.balance,
+      name === "income" ? parseInt(value) : ranges.income,
+      name === "expense" ? parseInt(value) : ranges.expense
+    )
+  }
 
   function addMonths(date, months) {
     var d = new Date(date)
@@ -17,8 +31,9 @@ function Months() {
 
   function calcMonthsLeft(bal, inc, exp) {
     if (inc >= exp) {
-      inc === exp ? setMonthsLeftString(`Be careful, you're not saving`) :
-        setMonthsLeftString(`Congrats. 
+      inc === exp
+        ? setMonthsLeftString(`Be careful, you're not saving`)
+        : setMonthsLeftString(`Congrats. 
       You don't spend more than you earn.`)
     } else {
       const monthsLeft = Math.trunc(bal / (exp - inc))
@@ -41,65 +56,50 @@ function Months() {
 
       <div className="input-box-container">
         <div className="input-box">
-          <h2 className="input-box__amount">{rangeBalance} €</h2>
+          <h2 className="input-box__amount">{ranges.balance} €</h2>
           <input
             type="range"
             className="custom-range"
             min="0"
             max="99999"
             step="100"
-            value={rangeBalance}
-            onInput={(event) => {
-              setRangeBalance(parseInt(event.target.value))
-              calcMonthsLeft(
-                parseInt(event.target.value),
-                rangeIncome,
-                rangeExpense
-              )
-            }}
+            name="balance"
+            value={ranges.balance}
+            onChange={updateRangesAndMonths}
+
           />
           <h4 className="input-box__title">TOTAL BALANCE</h4>
         </div>
 
         <div className="input-box">
-          <h2 className="input-box__amount">{rangeIncome} €</h2>
+          <h2 className="input-box__amount">{ranges.income} €</h2>
           <input
             type="range"
             className="custom-range"
             min="0"
             max="10000"
             step="100"
-            defaultValue="2000"
-            onInput={(event) => {
-              setRangeIncome(parseInt(event.target.value))
-              calcMonthsLeft(
-                rangeBalance,
-                parseInt(event.target.value),
-                rangeExpense
-              )
-            }}
+            name="income"
+            value={ranges.income}
+            onChange={updateRangesAndMonths}
+
           />
           <h4 className="input-box__title input-box__title--green">
             MONTHLY INCOME
           </h4>
         </div>
         <div className="input-box">
-          <h2 className="input-box__amount">{rangeExpense} €</h2>
+          <h2 className="input-box__amount">{ranges.expense} €</h2>
           <input
             type="range"
             className="custom-range"
             min="0"
             max="10000"
             step="100"
-            defaultValue="1000"
-            onInput={(event) => {
-              setRangeExpense(parseInt(event.target.value))
-              calcMonthsLeft(
-                rangeBalance,
-                rangeIncome,
-                parseInt(event.target.value)
-              )
-            }}
+            name="expense"
+            value={ranges.expense}
+            onChange={updateRangesAndMonths}
+
           />
           <h4 className="input-box__title input-box__title--red">
             MONTHLY EXPENSES
